@@ -1,8 +1,6 @@
-const parseValidationErrors = (e, req) => {
+const parseValidationErrors = (req, e) => {
   const keys = Object.keys(e.errors);
-  keys.forEach((key) => {
-    req.flash("error", key + ": " + e.errors[key].properties.message);
-  });
+  return keys.map((key) => key + ": " + e.errors[key].properties.message);
 };
 
 module.exports = parseValidationErrors;
